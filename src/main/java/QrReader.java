@@ -1,5 +1,3 @@
-package com.deyixtan.zxing_java;
-
 import com.google.zxing.*;
 import com.google.zxing.client.j2se.BufferedImageLuminanceSource;
 import com.google.zxing.common.GlobalHistogramBinarizer;
