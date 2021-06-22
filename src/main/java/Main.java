@@ -12,7 +12,7 @@ public class Main {
 
             String output = QrReader.processImage(imageBuffer);
             if (output.trim().length() > 0) {
-                System.out.println(output);
+                System.out.print(output);
             }
         } catch (IOException e) { }
     }
