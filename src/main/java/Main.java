@@ -1,6 +1,10 @@
+import com.google.gson.Gson;
+import com.google.zxing.Result;
+
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class Main {
 
@@ -9,11 +13,13 @@ public class Main {
     public static void main(String[] args) {
         try {
             BufferedImage imageBuffer = ImageIO.read(System.in);
+            ArrayList<Result> result = QrReader.processImage(imageBuffer);
 
-            String output = QrReader.processImage(imageBuffer);
+            Gson gson = new Gson();
+            String output = gson.toJson(result);
             if (output.trim().length() > 0) {
                 System.out.print(output);
             }
-        } catch (IOException e) { }
+        } catch (Exception e) { }
     }
 }

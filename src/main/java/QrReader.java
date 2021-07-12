@@ -19,7 +19,7 @@ public class QrReader {
     }
 
     // Ported from official zxing source (https://github.com/zxing/zxing/blob/master/zxingorg/src/main/java/com/google/zxing/web/DecodeServlet.java)
-    public static String processImage(BufferedImage image) {
+    public static ArrayList<Result> processImage(BufferedImage image) {
         LuminanceSource source = new BufferedImageLuminanceSource(image);
         BinaryBitmap bitmap = new BinaryBitmap(new GlobalHistogramBinarizer(source));
         ArrayList<Result> results = new ArrayList<>(1);
@@ -61,9 +61,10 @@ public class QrReader {
                     savedException = re;
                 }
             }
-            return results.get(0).getText();
+
+            return results;
         } catch (RuntimeException re) {
-            return "";
+            return null;
         }
     }
 }
